@@ -44,6 +44,65 @@ for (let i = 1; i < input.length; i += 2) {
   }  
 }
 
+for (let i = 0; i < input.length; i += 2) {
+  let one = parseInt(input[i].date.split("/")[2])
+  let two = parseInt(input[i + 1].date.split("/")[2])
+  
+  if (one < two) {
+    let savePlan = input[i].plan
+    let splitedOne = input[i].date.split("/")
+    let splitedTwo = input[i+1].date.split("/")
+    input.splice(i)
+    input.splice(i+1)
+    let k = i
+    for (let j = one; j <= two; j++) {
+      if (j === one) {
+        input.splice(k, 0, {
+          date: `${splitedOne[0]}/${splitedOne[1]}/${one}`,
+          plan: savePlan,
+          action: "start"
+        })
+        k++
+        input.splice(k, 0, {
+          date: `12/31/${one}`,
+          plan: savePlan,
+          action: "stop"
+        })
+        k++
+      }
+      else if (j === two) {
+        input.splice(k, 0, {
+          date: `1/1/${two}`,
+          plan: savePlan,
+          action: "start"
+        })
+        k++
+        console.log(`${splitedTwo[0]}/${splitedTwo[1]}/${two}`)
+        input.splice(k, 0, {
+          date: `${splitedTwo[0]}/${splitedTwo[1]}/${two}`,
+          plan: savePlan,
+          action: "stop"
+        })
+        k++
+      }
+      else if (j !== two && j !== one) {
+        input.splice(k, 0, {
+          date: `1/1/${j}`,
+          plan: savePlan,
+          action: "start"
+        })
+        k++
+        input.splice(k, 0, {
+          date: `12/31/${j}`,
+          plan: savePlan,
+          action: "stop"
+        })
+        k++
+      }
+    }
+  }
+}
+
 // console.log(input)
 
 function extractDay(date) {
@@ -88,8 +147,8 @@ function acrossMultipleMonths(inputOne, inputTwo, start, stop, cost) {
           totalCost = (lastDay[i - 1]) * cost
         }
         let Output = {
-          startDate: i === start ? inputOne.date : `${i}/1/2021`,
-          endDate: `${i}/${lastDay[i - 1]}/2021`,
+          startDate: i === start ? inputOne.date : `${i}/1/${inputOne.date.split("/")[2]}`,
+          endDate: `${i}/${lastDay[i - 1]}/${inputOne.date.split("/")[2]}`,
           plan : inputOne.plan,
           amount: totalCost
         }
@@ -98,7 +157,7 @@ function acrossMultipleMonths(inputOne, inputTwo, start, stop, cost) {
       else if (i === stop) {
         let totalCost = (parseInt(inputTwo.date.split("/")[1])) * cost
         let Output = {
-          startDate: `${i}/1/2021`,
+          startDate: `${i}/1/${inputOne.date.split("/")[2]}`,
           endDate: inputTwo.date,
           plan : inputOne.plan,
           amount: totalCost
