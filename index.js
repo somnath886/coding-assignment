@@ -3,8 +3,11 @@ const {input} = require("./input")
 const Plan = {
   bronze : 10,
   silver : 20,
-  gold : 30
+  gold : 30,
 }
+
+let selectedPlan = "bronze"
+console.log(Plan[selectedPlan])
 
 let OutputArray = new Array()
 
@@ -28,13 +31,13 @@ for (let i = 1; i < input.length; i += 2) {
   if (i + 1 < input.length) {
     if (input[i].date === input[i+1].date) {
       let arr = getExpensiveOne(input[i], input[i+1])
-      if (arr[0] > arr[1] || arr[0] === arr[1]) {
+      if (arr[0] > arr[1] ) {
         let newDay = new Date(input[i + 1].date)
         input[i + 1].date = new Date(newDay.setDate(newDay.getDate() + 1)).toLocaleString("en-us", {
           timeZone: "Asia/Calcutta"
         }).split(",")[0]
       }
-      else if (arr[0] < arr[1]) {
+      else if (arr[0] < arr[1] || arr[0] === arr[1]) {
         let newDay = new Date(input[i].date)
         input[i].date = new Date(newDay.setDate(newDay.getDate() - 1)).toLocaleString("en-us", {
           timeZone: "Asia/Calcutta"
@@ -103,7 +106,7 @@ for (let i = 0; i < input.length; i += 2) {
   }
 }
 
-// console.log(input)
+console.log(input)
 
 function extractDay(date) {
   let day = parseInt(date.split("/")[1])
@@ -177,13 +180,15 @@ function monthlyBill() {
     if (stop === start) {
       let startDay = extractDay(input[i].date)
       let stopDay = extractDay(input[i + 1].date)
-      let Output = {
-        startDate: input[i].date,
-        endDate: input[i + 1].date,
-        plan: input[i].plan,
-        amount: (stopDay - startDay + 1) * cost
-      }
-      OutputArray.push(Output)
+      if (stopDay > startDay || stopDay === startDay) {
+        let Output = {
+          startDate: input[i].date,
+          endDate: input[i + 1].date,
+          plan: input[i].plan,
+          amount: (stopDay - startDay + 1) * cost
+        }
+        OutputArray.push(Output)
+      }      
     }
     else if (stop != start) {
       acrossMultipleMonths(input[i], input[i + 1], start, stop, cost)

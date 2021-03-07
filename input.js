@@ -25,12 +25,32 @@ let input = [
       action: "start"
     },
     {
-      date: "3/1/2021",
+      date: "3/2/2021",
+      plan: "silver",
+      action: "stop"
+    },
+    {
+      date: "3/2/2021",
+      plan: "silver",
+      action: "start"
+    },
+    {
+      date: "3/2/2021",
       plan: "bronze",
       action: "stop"
     },
     {
-      date: "3/1/2021",
+      date: "3/2/2021",
+      plan: "gold",
+      action: "start"
+    },
+    {
+      date: "3/2/2021",
+      plan: "gold",
+      action: "stop"
+    },
+    {
+      date: "3/2/2021",
       plan: "silver",
       action: "start"
     },
