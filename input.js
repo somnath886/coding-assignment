@@ -21,26 +21,6 @@ let input = [
     },
     {
       date: "1/21/2021",
-      plan: "bronze",
-      action: "start"
-    },
-    {
-      date: "3/1/2021",
-      plan: "bronze",
-      action: "stop"
-    },
-    {
-      date: "3/1/2021",
-      plan: "bronze",
-      action: "start"
-    },
-    {
-      date: "3/1/2021",
-      plan: "bronze",
-      action: "stop"
-    },
-    {
-      date: "3/1/2021",
       plan: "gold",
       action: "start"
     },
@@ -51,32 +31,12 @@ let input = [
     },
     {
       date: "3/1/2021",
-      plan: "silver",
+      plan: "bronze",
       action: "start"
     },
     {
       date: "3/1/2021",
-      plan: "silver",
-      action: "stop"
-    },
-    {
-      date: "3/1/2021",
-      plan: "gold",
-      action: "start"
-    },
-    {
-      date: "3/1/2021",
-      plan: "gold",
-      action: "stop"
-    },
-    {
-      date: "3/1/2021",
-      plan: "silver",
-      action: "start"
-    },
-    {
-      date: "3/1/2021",
-      plan: "silver",
+      plan: "bronze",
       action: "stop"
     },
     {

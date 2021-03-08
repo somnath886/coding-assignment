@@ -246,4 +246,23 @@ function monthlyBill() {
 }
 
 monthlyBill()
+
+for (let i = 0; i < OutputArray.length; i++) {
+  if (i + 1 < OutputArray.length) {
+    if (OutputArray[i].startDate === OutputArray[i + 1].startDate && Plan[OutputArray[i].plan] <= Plan[OutputArray[i + 1].plan]) {
+      OutputArray.splice(i, 1)
+      i = 0
+    }
+    else if (OutputArray[i].startDate === OutputArray[i + 1].startDate && Plan[OutputArray[i].plan] > Plan[OutputArray[i + 1].plan]) {
+      let newDate = new Date(OutputArray[i + 1].startDate)
+      let pushedDate = new Date(newDate.setDate(newDate.getDate() + 1))
+      OutputArray[i + 1].startDate = pushedDate.toLocaleString("en-us", {
+        timeZone: "Asia/Calcutta"
+      }).split(",")[0]
+      OutputArray[i + 1].amount = OutputArray[i + 1].amount - Plan[OutputArray[i + 1].plan]
+      i = 0
+    }
+  }
+}
+
 console.log(OutputArray)
