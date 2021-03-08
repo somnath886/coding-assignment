@@ -1,15 +1,64 @@
 const {input} = require("./input")
 
+let temp = input
+
+input.push({
+  date: "0",
+  plan: "0",
+  action: "0"
+})
+
 const Plan = {
   bronze : 10,
   silver : 20,
   gold : 30,
 }
 
-let selectedPlan = "bronze"
-console.log(Plan[selectedPlan])
-
 let OutputArray = new Array()
+
+for (let i = 0; i < input.length; i += 2) {
+  let evaluate = new Array()
+  evaluate.push(input[i])
+  for (let j = i + 2; j < input.length; j += 2) {
+    if (input[i].date === input[j].date && input[i+1].date === input[j+1].date) {
+      evaluate.push(input[j])
+    }
+    else {
+      if (evaluate.length > 1) {
+        let max = null
+        switch (Math.max.apply(Math, evaluate.map(function(o) { return Plan[o.plan]; }))) {
+          case 10:
+            max = "bronze"
+          case 20:
+            max = "silver"
+          case 30:
+            max = "gold"
+        }
+        let maximumStart = {
+          date: evaluate[0].date,
+          plan: max,
+          action: "start"
+        }
+        let maximumStop = {
+          date: evaluate[0].date,
+          plan: max,
+          action: "stop"
+        }
+        temp.splice(i, j - i)
+        temp.splice(i, 0, maximumStart)
+        temp.splice(i, 0, maximumStop)
+        i = 0
+        break
+      }
+      i = j - 2
+      break
+    }
+  }
+}
+
+input.pop()
+
+console.log(input)
 
 function getExpensiveOne(inputOne, inputTwo) {
   let planOne = null

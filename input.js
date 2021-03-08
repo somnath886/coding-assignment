@@ -25,32 +25,62 @@ let input = [
       action: "start"
     },
     {
-      date: "3/2/2021",
-      plan: "silver",
-      action: "stop"
-    },
-    {
-      date: "3/2/2021",
-      plan: "silver",
-      action: "start"
-    },
-    {
-      date: "3/2/2021",
+      date: "3/1/2021",
       plan: "bronze",
       action: "stop"
     },
     {
-      date: "3/2/2021",
+      date: "3/1/2021",
+      plan: "bronze",
+      action: "start"
+    },
+    {
+      date: "3/1/2021",
+      plan: "bronze",
+      action: "stop"
+    },
+    {
+      date: "3/1/2021",
       plan: "gold",
       action: "start"
     },
     {
-      date: "3/2/2021",
+      date: "3/1/2021",
       plan: "gold",
       action: "stop"
     },
     {
-      date: "3/2/2021",
+      date: "3/1/2021",
+      plan: "silver",
+      action: "start"
+    },
+    {
+      date: "3/1/2021",
+      plan: "silver",
+      action: "stop"
+    },
+    {
+      date: "3/1/2021",
+      plan: "gold",
+      action: "start"
+    },
+    {
+      date: "3/1/2021",
+      plan: "gold",
+      action: "stop"
+    },
+    {
+      date: "3/1/2021",
+      plan: "silver",
+      action: "start"
+    },
+    {
+      date: "3/1/2021",
+      plan: "silver",
+      action: "stop"
+    },
+    {
+      date: "3/1/2021",
       plan: "silver",
       action: "start"
     },
@@ -61,6 +91,26 @@ let input = [
     },
     {
       date: "3/11/2021",
+      plan: "gold",
+      action: "start"
+    },
+    {
+      date: "3/20/2021",
+      plan: "gold",
+      action: "stop"
+    },
+    {
+      date: "3/20/2021",
+      plan: "gold",
+      action: "start"
+    },
+    {
+      date: "3/20/2021",
+      plan: "gold",
+      action: "stop"
+    },
+    {
+      date: "3/20/2021",
       plan: "gold",
       action: "start"
     },
