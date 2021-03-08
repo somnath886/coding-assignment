@@ -244,7 +244,6 @@ function monthlyBill() {
 }
 
 monthlyBill()
-console.log(OutputArray)
 
 for (let i = 0; i < OutputArray.length; i++) {
   if (i + 1 < OutputArray.length) {
