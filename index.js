@@ -29,10 +29,13 @@ for (let i = 0; i < input.length; i += 2) {
         switch (Math.max.apply(Math, evaluate.map(function(o) { return Plan[o.plan]; }))) {
           case 10:
             max = "bronze"
+            break
           case 20:
             max = "silver"
+            break
           case 30:
             max = "gold"
+            break
         }
         let maximumStart = {
           date: evaluate[0].date,
@@ -57,8 +60,6 @@ for (let i = 0; i < input.length; i += 2) {
 }
 
 input.pop()
-
-console.log(input)
 
 function getExpensiveOne(inputOne, inputTwo) {
   let planOne = null
@@ -129,7 +130,6 @@ for (let i = 0; i < input.length; i += 2) {
           action: "start"
         })
         k++
-        console.log(`${splitedTwo[0]}/${splitedTwo[1]}/${two}`)
         input.splice(k, 0, {
           date: `${splitedTwo[0]}/${splitedTwo[1]}/${two}`,
           plan: savePlan,
@@ -154,8 +154,6 @@ for (let i = 0; i < input.length; i += 2) {
     }
   }
 }
-
-console.log(input)
 
 function extractDay(date) {
   let day = parseInt(date.split("/")[1])
